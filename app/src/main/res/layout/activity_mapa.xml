@@ -5,4 +5,28 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pl.edu.pjwstk.pawelkaminski.proj4smb.geolokacja.Mapa" />
+    tools:context="pl.edu.pjwstk.pawelkaminski.proj4smb.geolokacja.Mapa" >
+
+    <Button
+    android:id="@+id/btn_dodaj"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="78dp"
+    android:layout_marginTop="600dp"
+    android:onClick="DodajNoweMiejsce"
+    android:text="Dodaj nowe miejsce" />
+
+    <Button
+    android:id="@+id/btn_wyswietl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="245dp"
+    android:layout_marginTop="600dp"
+    android:onClick="WyswietlDodaneMiejsca"
+    android:text="Wyświetl dodane miejsca" />
+
+</fragment>
