@@ -52,7 +52,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback {
         }
 
         // Add a marker in Sydney and move the camera
-        LatLng Warsaw = new LatLng(-52.237049, 21.017532);
+        LatLng Warsaw = new LatLng(52.237049, 21.017532);
         mMap.addMarker(new MarkerOptions().position(Warsaw).title("Marker in Warsaw"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Warsaw));
 
