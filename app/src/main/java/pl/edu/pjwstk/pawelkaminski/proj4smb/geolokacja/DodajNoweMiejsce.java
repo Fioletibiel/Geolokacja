@@ -20,9 +20,9 @@ public class DodajNoweMiejsce extends Activity {
         setContentView(R.layout.activity_dodaj_nowe_miejsce);
     }
 
-    public void DodajPunkt(View view) {
+    public void DodajNoweMiejsce(View view) {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Nadaj aplikacji uprawnienia do GPSu", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Proszę nadaj tej aplikacji uprawnienia GPS.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -32,16 +32,13 @@ public class DodajNoweMiejsce extends Activity {
 
         Double szerokosc = 0d;
         Double wysokosc = 0d;
-
         long GPSLocationTime = 0;
         long NetLocationTime = 0;
 
         if (location != null)
             GPSLocationTime = location.getTime();
-
         if (locationGsm != null)
             NetLocationTime = locationGsm.getTime();
-
 
         if (  GPSLocationTime - NetLocationTime > 0 ) {
             szerokosc = location.getLatitude();
@@ -52,26 +49,23 @@ public class DodajNoweMiejsce extends Activity {
             wysokosc = locationGsm.getLongitude();
         }
 
-        EditText nazwaEditText = (EditText) findViewById(R.id.Nazwa) ;
-        String nazwa = nazwaEditText.getText().toString();
+        EditText et_nazwa_miejsca = findViewById(R.id.et_nazwa_miejsca) ;
+        String nazwa = et_nazwa_miejsca.getText().toString();
+        EditText et_opis_miejsca = findViewById(R.id.et_opis_miejsca) ;
+        String opis = et_opis_miejsca.getText().toString();
 
-        EditText opisEditText = (EditText) findViewById(R.id.Opis) ;
-        String opis = opisEditText.getText().toString();
+        SharedPreferences sP = this.getSharedPreferences("Dane", Context.MODE_PRIVATE);
+        Integer iloscElementow = sP.getInt("IloscElementow",0);
+        iloscElementow+=1;
 
-        SharedPreferences sharedPreferences = this.getSharedPreferences("Dane", Context.MODE_PRIVATE);
-        Integer iloscElementow = sharedPreferences.getInt("IloscElementow",0);
-        iloscElementow = iloscElementow +1;
+        SharedPreferences.Editor edytor = sP.edit();
+        edytor.putInt("IloscElementow",iloscElementow);
+        edytor.putString("Szerokosc"+iloscElementow,szerokosc.toString());
+        edytor.putString("Wysokosc"+iloscElementow,wysokosc.toString());
+        edytor.putString("Nazwa"+iloscElementow,nazwa);
+        edytor.putString("Opis"+iloscElementow,opis);
+        edytor.commit();
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("IloscElementow",iloscElementow);
-        editor.putString("Szerokosc"+iloscElementow,szerokosc.toString());
-        editor.putString("Wysokosc"+iloscElementow,wysokosc.toString());
-        editor.putString("Nazwa"+iloscElementow,nazwa);
-        editor.putString("Opis"+iloscElementow,opis);
-
-        editor.commit();
-        Toast.makeText(this, "Nowy punkt \""+nazwa+"\", został dodany. ", Toast.LENGTH_LONG).show();
-
+        Toast.makeText(this, "Zostało dodane nowe miejsce: \"" + nazwa + "\"", Toast.LENGTH_LONG).show();
     }
-
 }

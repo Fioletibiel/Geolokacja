@@ -13,25 +13,26 @@ public class WyswietlDodaneMiejsca extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wyswietl_dodane_miejsca);
 
-        SharedPreferences sharedPreferences = this.getSharedPreferences("Dane", Context.MODE_PRIVATE);
-        Integer iloscElementow = sharedPreferences.getInt("IloscElementow",0);
-        TextView text = (TextView) findViewById(R.id.tv_dodane_miejsca);
-        String wynik = "";
+        SharedPreferences sP = this.getSharedPreferences("Dane", Context.MODE_PRIVATE);
+        Integer iloscElementow = sP.getInt("IloscElementow",0);
+
+        TextView wykaz_dodanych_miejsc = findViewById(R.id.tv_dodane_miejsca);
+        String wynik = "\n";
+
         for(int i = 0; i<=iloscElementow;i++){
 
-            String nazwa = sharedPreferences.getString("Nazwa"+i,"");
-            String opis = sharedPreferences.getString("Opis"+i,"");
-            String szerokosc = sharedPreferences.getString("Szerokosc"+i,"");
-            String wysokosc = sharedPreferences.getString("Wysokosc"+i,"");
+            String nazwa = sP.getString("Nazwa"+i,"");
+            String opis = sP.getString("Opis"+i,"");
+            String szerokosc = sP.getString("Szerokosc"+i,"");
+            String wysokosc = sP.getString("Wysokosc"+i,"");
 
             if(!nazwa.equals("") && !szerokosc.equals("") && !wysokosc.equals("")){
                 wynik = wynik + "Nazwa: " + nazwa + "\n";
                 wynik = wynik +"Opis: " + opis + "\n";
                 wynik = wynik + "Szerokosc: " + szerokosc + "\n";
-                wynik = wynik + "Wysokosc: " + wysokosc + "\n";
+                wynik = wynik + "Wysokosc: " + wysokosc + "\n"+ "\n";
             }
         }
-        text.setText(wynik);
-
+        wykaz_dodanych_miejsc.setText(wynik);
     }
 }

@@ -7,52 +7,51 @@
     tools:context="pl.edu.pjwstk.pawelkaminski.proj4smb.geolokacja.DodajNoweMiejsce">
 
     <TextView
-        android:text="Nazwa nowego punktu"
+        android:id="@+id/tv_nazwa_miejsca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:text="Podaj nazwę nowego miejsca:" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/textView"
+        android:ems="12"
+        android:layout_below="@+id/tv_nazwa_miejsca"
         android:layout_alignParentStart="true"
-        android:id="@+id/Nazwa"
+        android:id="@+id/et_nazwa_miejsca"
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="Opis"
+        android:text="Opisz nowe miejsce:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Nazwa"
+        android:layout_below="@+id/et_nazwa_miejsca"
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp"
-        android:id="@+id/OpisTextView"
+        android:id="@+id/tv_opis_miejsca"
         android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/OpisTextView"
+        android:ems="12"
+        android:layout_below="@+id/tv_opis_miejsca"
         android:layout_alignParentStart="true"
-        android:id="@+id/Opis"
+        android:id="@+id/et_opis_miejsca"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="Dodaj nowy punkt"
+        android:id="@+id/btn_dodaj_nowe_miejsce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/ZapiszPunkt"
-        android:onClick="DodajPunkt"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="142dp"
+        android:onClick="DodajNoweMiejsce"
+        android:text="Dodaj nowe miejsce" />
 
 </RelativeLayout>
