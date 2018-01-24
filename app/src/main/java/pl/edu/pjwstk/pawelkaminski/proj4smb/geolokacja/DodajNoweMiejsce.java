@@ -26,27 +26,27 @@ public class DodajNoweMiejsce extends Activity {
             return;
         }
 
-        LocationManager LocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location = LocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Location locationGsm = LocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location locGSM = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         Double szerokosc = 0d;
         Double wysokosc = 0d;
         long GPSLocationTime = 0;
         long NetLocationTime = 0;
 
-        if (location != null)
-            GPSLocationTime = location.getTime();
-        if (locationGsm != null)
-            NetLocationTime = locationGsm.getTime();
+        if (loc != null)
+            GPSLocationTime = loc.getTime();
+        if (locGSM != null)
+            NetLocationTime = locGSM.getTime();
 
         if (  GPSLocationTime - NetLocationTime > 0 ) {
-            szerokosc = location.getLatitude();
-            wysokosc = location.getLongitude();
+            szerokosc = loc.getLatitude();
+            wysokosc = loc.getLongitude();
         }
         else {
-            szerokosc = locationGsm.getLatitude();
-            wysokosc = locationGsm.getLongitude();
+            szerokosc = locGSM.getLatitude();
+            wysokosc = locGSM.getLongitude();
         }
 
         EditText et_nazwa_miejsca = findViewById(R.id.et_nazwa_miejsca) ;
