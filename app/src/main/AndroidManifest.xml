@@ -42,6 +42,7 @@
         </activity>
         <activity android:name=".DodajNoweMiejsce" />
         <activity android:name=".WyswietlDodaneMiejsca"></activity>
+
     </application>
 
 </manifest>
